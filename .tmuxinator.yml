@@ -1,0 +1,12 @@
+name: wireframe
+root: .
+startup_window: lein
+windows:
+  - lein:
+      panes:
+        - shell:
+            ls
+        - repl:
+            lein repl
+        - ring:
+            lein ring server-headless

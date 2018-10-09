@@ -1,0 +1,6 @@
+.carousel .carousel-slide-in {
+    display:none;
+}
+.carousel .carousel-slide-in:target {
+    display: block;
+}
