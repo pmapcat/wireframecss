@@ -7,12 +7,10 @@
 (ns wireframe.gen-doc
   (:require [wireframe.styles :as styles]
             [wireframe.styles-specific :as sstyles]
-            [wireframe.config :refer [conf]]
+            [wireframe.color-material :as color-material]
+            [wireframe.utils :refer [get-class-names]]
             [garden.core :as garden]))
 
-(defn get-class-names
-  [item]
-  (distinct (re-seq (re-pattern (str "\\." (conf :prefix) "[^\\s:]+")) (garden/css item))))
 
 (defn- highlight
   [item subs styles]
@@ -26,7 +24,7 @@
 
 (defn- demo-setup
   [body]
-  [:div.mik-padded-as-button {:style "background:url(\"/sheet.png\")"}
+  [:div.mik-pad-1 {:style "background:url(\"/sheet.png\")"}
    body])
 
 (defn- make-demo
@@ -49,11 +47,12 @@
   ([title description gen-res attach-class]
    (let [classes (get-class-names gen-res)]
      [:div
-      [:h4.mik-cut-bottom.mik-fw-2 title]
-      [:p.mik-cut-top.mik-cut-bottom.mik-tiny-container
+      [:h4.mik-cut-bottom [:a.mik-fs-0 {:href "#top"} "[ top ] "] title]
+      [:p.mik-cut-top.mik-cut-bottom
        description]
-      [:div.mik-tiny-container.mik-pad-0.mik-margin-0.mik-shadow
-       (make-demo attach-class classes )]])))
+      [:div.mik-pad-0.mik-margin-0
+       (make-demo attach-class classes )]
+      [:hr]])))
 
 (def ratio-scale
   (str "[" (clojure.string/join ", " (map styles/ratio (range 7))) "]"))
@@ -120,4 +119,5 @@
    (generate-doc
     "Padded|Margin as button"
     "Will pad or add margins as in button"
-    (styles/p-as-button-specificed))])
+    (styles/p-as-button-specificed))
+   (color-material/generate-doc)])
