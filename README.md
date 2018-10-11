@@ -23,7 +23,7 @@ helpers, not all of them have all those that I need.
 And they tend to name things differently there.
 
 Some of the other implementations might require pipelines
-that differ from a particular workflow. 
+that differ from this particular workflow. 
 
 ## Tips
 
@@ -32,11 +32,11 @@ For example: **.qq-cut-bottom becomes** turns into **.qq-cut-bottom-angry**
 
 ## Showcase (mostly my stuff here)
 
+* [Documentation site of this set of classes (in conjunction with PureCSS)](https://wireframecss.michaelleahcim.com/)
 * [Static blog engine. Building theme in conjunction with PureCSS](https://www.michaelleahcim.com/blog/all/0/index.html)
 * [(HTML screens in conjunction with PureCSS)](https://www.michaelleahcim.com/work-article/group_tracker.html)
-* [(HTML screens in conjunction with PureCSS)](https://www.michaelleahcim.com/work-article/log_tagger.html)
-* [(HTML screens in conjunction with PureCSS)](https://www.michaelleahcim.com/work-article/filecat.html)
 * [(HTML screens in conjunction with SemanticUI)](https://www.michaelleahcim.com/work-article/clipper.html)
+* [(HTML screens in conjunction with PureCSS)](https://www.michaelleahcim.com/work-article/log_tagger.html)
 
 
 ## Running and customization
