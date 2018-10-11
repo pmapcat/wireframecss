@@ -6,32 +6,8 @@
 ;; @@@@@@ At 2018-10-10 22:10 <mklimoff222@gmail.com> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 (ns wireframe.color-material
-  (:require [wireframe.utils :as utils]))
-
-(def ^{:private true} MATERIAL-PALETTE
-  (read-string (slurp (clojure.java.io/resource "material_palette.edn"))))
-(def COLOR-NAMES
-  [:red
-   :pink
-   :purple
-   :deeppurple
-   :indigo
-   :blue
-   :lightblue
-   :cyan
-   :teal
-   :green
-   :lightgreen
-   :lime
-   :yellow
-   :amber
-   :orange
-   :deeporange
-   :brown
-   :grey
-   :bluegrey])
-
-
+  (:require [wireframe.utils :as utils]
+            [wireframe.config :refer [*MATERIAL-PALETTE* *COLOR-NAMES*]]))
 
 (defn- p-color-style
   [color-name color]
@@ -64,19 +40,19 @@
 
 (defn gen-palette
   []
-  (for [key-item COLOR-NAMES]
-    (by-color-name  key-item (MATERIAL-PALETTE key-item))))
-
-(first (map utils/get-class-names  (gen-palette)))
+  (for [key-item *COLOR-NAMES*]
+    (by-color-name  key-item (*MATERIAL-PALETTE* key-item))))
 
 (defn generate-doc
   ([]
    [:div.flush-center
-    [:h4.mik-cut-bottom.mik-blue-s-3 [:a.mik-fs-0 {:href "#top"} "[ top ] "] "Material color palette"]
+    [:h4.mik-cut-bottom [:a.mik-fs-0 {:href "#top"} "[ top ] "] "Material color palette"]
     [:p.mik-cut-top.mik-cut-bottom
-     "Copy paste class names for use " [:br]
+     [:p.mik-pad-0.element-color-background
+      "Colors take up the most space. The library with color will take " [:b "7.6K"]  " gzipped" [:br]
+      "And without color it will take " [:b "1.6K"] " gzipped" [:br]]
      "Available color names are: " [:br]
-     (for [i  (map name COLOR-NAMES)]
+     (for [i  (map name *COLOR-NAMES*)]
        [:b {:class (str "mik-" i)} " " i " "]) [:br]
      
      "Attach " [:b " -back "] "for it to work for the background" [:br]
@@ -84,11 +60,12 @@
      "Attach " [:b " -t-1, -t-2,-t-3,-t-4,-t-4, -t-5 "] "for tints" [:br]
      "Attach " [:b " -s-1, -s-2,-s-3,-s-4,-s-4, -s-5 "] "for shades" [:br]
      "Attach " [:b " -a-1, -a-2,-a-3 "] "for accents"]
-    [:div.mik-pad-0.mik-margin-0
-     [:table {:cellspacing "0" :cellpadding "0" :border "solid"}
-      [:tbody.mik-fs-0
+    [:div
+     [:table
+      [:tbody.mik-fs-0-angry
        (for [color (gen-palette)]
          [:tr
           (for [class-name (filter #(.contains % "-back")  (utils/get-class-names color))]
-            [:td.mik-pad-0.mik-fs-0 {:style "border:none;" :class (apply str (rest class-name))} (str  class-name)])])]]]
+            [:td.mik-fs-0-angry {:class (str (apply str (rest class-name)) "-angry")}
+             (str  class-name)])])]]]
     [:hr]]))

@@ -6,20 +6,20 @@
 ;; @@@@@@ At 2018-09-10 17:23 <mklimoff222@gmail.com> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 (ns wireframe.styles
   (:require [garden.stylesheet :refer [at-media]]
-            [wireframe.config :refer [conf]]
+            [wireframe.config :refer [*PREFIX* *RATIO*]]
             [wireframe.utils :refer [dstr kstr angry]]))
 
 (defn ratio
   [item]
   (try
-    (str  (nth  (conf :ratio) item) "em")
-    (catch Exception e (last (conf :ratio)))))
+    (str  (nth   *RATIO* item) "em")
+    (catch Exception e (last *RATIO*))))
 
 (defn p-cut
   ([on]
    (if (empty? on)
      [(dstr "cut")  {:padding (angry "0")
-                  :margin  (angry "0")}]
+                     :margin  (angry "0")}]
      [(dstr  "cut" on)  {(kstr "padding" on) (angry "0")
                          (kstr "margin" on) (angry "0")}])))
 
@@ -28,6 +28,7 @@
     {:padding-right (angry "15px")
      :padding-left  (angry "15px")
      :margin-right (angry "auto")
+     :width (angry tiny)
      :margin-left (angry "auto")}]
    (at-media
     {:min-width "768px"}
@@ -38,6 +39,13 @@
    (at-media
     {:min-width "1200px"}
     [(dstr prefix "container") {:width (angry normal)}])])
+
+(defn p-defy-boundaries
+  []
+  [(dstr "defy-boundaries")
+   {:margin-left (angry "-585px")
+    :overflow-x   (angry "hidden")
+    :margin-right (angry "-585px")}])
 
 (defn p-flush
   [on]
@@ -52,13 +60,10 @@
   [op-name op-prefix until on]
   (conj
    (for [item (range until)]
-     [(dstr op-name  on item)
+     [(dstr op-name on item)
       {(kstr op-prefix on ) (angry (ratio item))}])
    [(dstr op-name on)
     {(kstr op-prefix on) (angry (ratio 1))}]))
-
-;; (p-signify
-;;  "pad" "padding" 1 "top")
 
 (defn p-pad
   [until on]
@@ -93,12 +98,17 @@
    (p-container  "small" "750px" "970px" "970px")
    (p-container  "tiny" "500px" "500px" "500px")])
 
+
 (defn  p-clearfix []
   [(dstr :clearfix) {:overflow (angry "auto;")}])
+
 (defn p-line-justify []
    [(dstr :line-justify)
     {:text-align (angry "justify")}
     [:&:after {:content (angry "\"\"") :display (angry "inline-block") :width (angry "100%")}]])
+
+
+
 
 (defn p-shadow []
   [(dstr :shadow) {:box-shadow (angry "0px 1px 1px 0 grey")}])
@@ -124,6 +134,7 @@
 
 (defn p-pad-specified []
   (map (partial p-pad 6)    ["" "top" "bottom" "left" "right"]))
+
 (defn p-margin-specified []
   (map (partial p-margin 6) ["" "top" "bottom" "left" "right"]))
 
@@ -136,6 +147,7 @@
    (p-float-specified)
    (p-flush-specified)
    (p-fs-specified)
+   ;; (p-defy-boundaries)
    (p-fw)
    (p-containers)
    (p-line-justify)

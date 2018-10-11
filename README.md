@@ -1,19 +1,32 @@
-# wireframe
+# Wireframe CSS
 
-FIXME
+A set of practical, framework agnostic, zero configuration CSS classes
+for everyday use
+![screen capture](https://raw.githubusercontent.com/MichaelLeachim/wireframecss/master/resources/public/screenshot.png)
 
-## Prerequisites
-
-You will need [Leiningen][] 2.0.0 or above installed.
-
-[leiningen]: https://github.com/technomancy/leiningen
+Documentation and compilled scripts are available [here](http://wireframecss.michaelleahcim.com/)
 
 ## Running
 
-To start a web server for the application, run:
+You will need [Leiningen][] 2.0.0 or above installed.
+You will also need [Tmuxinator][] 
 
-    lein ring server
+[leiningen]:  https://github.com/technomancy/leiningen
+[tmuxinator]: https://github.com/tmuxinator/tmuxinator
+
+Then 
+```
+git clone github.com/MichaelLeachim/wireframecss; 
+cd wireframecss;
+tmuxinator .
+```
 
 ## License
 
-Copyright © 2018 FIXME
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@ Copyright (c) Michael Leachim                                                      @
+@ You can find additional information regarding licensing of this work in license.md @
+@ You must not remove this notice, or any other, from this document.                 @
+@ All rights reserved.                                                               @
+@@@@@@ At 2018-11-10 19:12 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+

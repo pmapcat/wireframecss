@@ -8,9 +8,7 @@
 (ns wireframe.utils
   (:require
    [garden.core :as garden]
-   [wireframe.config :refer [conf]]))
-
-(def ^{:dynamic true} *ANGRY* false)
+   [wireframe.config :as config :refer [*ANGRY* *PREFIX*]]))
 
 (defn- black-font-calculator
   [r g b]
@@ -30,13 +28,13 @@
 
 (defn get-class-names
   [item]
-  (distinct (re-seq (re-pattern (str "\\." (conf :prefix) "[^\\s:]+")) (garden/css item))))
+  (distinct (re-seq (re-pattern (str "\\." *PREFIX* "[^\\s:]+")) (garden/css item))))
 
 
 
 (defn angry
   [item]
-  (if *ANGRY*
+  (if config/*ANGRY*
     (str item " !important")
     item))
 
@@ -51,7 +49,6 @@
   [& whatever]
   (as->
     (map any-to-string whatever) $
-    (if *ANGRY* (concat $ ["angry"]) $)
     (clojure.string/join "-" $)
     (clojure.string/split $ #"-+")
     (clojure.string/join "-" $)))
@@ -60,13 +57,12 @@
   [& whatever]
   (as->
     (map any-to-string whatever) $
-    (if *ANGRY* (concat $ ["angry"]) $)
-    (concat  [(str "." (conf :prefix))] $)
+    (if config/*ANGRY* (concat $ ["angry"]) $)
+    (concat  [(str "." *PREFIX*)] $)
     (clojure.string/join "-" $)
     (clojure.string/split $ #"-+")
     (clojure.string/join "-" $)))
 
-
-
-
-
+(defn whatever
+  []
+  config/*ANGRY*)

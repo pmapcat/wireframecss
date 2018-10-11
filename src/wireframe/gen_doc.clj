@@ -6,7 +6,6 @@
 ;; @@@@@@ At 2018-09-10 18:03 <mklimoff222@gmail.com> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 (ns wireframe.gen-doc
   (:require [wireframe.styles :as styles]
-            [wireframe.styles-specific :as sstyles]
             [wireframe.color-material :as color-material]
             [wireframe.utils :refer [get-class-names]]
             [garden.core :as garden]))
@@ -22,18 +21,20 @@
      "</span>"))
    (clojure.string/replace item (re-pattern subs))))
 
-(defn- demo-setup
-  [body]
-  [:div.mik-pad-1 {:style "background:url(\"/sheet.png\")"}
-   body])
+(defn- display-div
+  [class body]
+  [:div {:style (str "margin:1em;overflow:auto;background:#F9CC9D94;")}
+   [:div {:class class  :style  "background:#C2CE8994;"}
+    [:span {:style "background:#dcdbfa94;"} body]]])
 
 (defn- make-demo
-  [attach-class list-of-classes]
-  (demo-setup
-   (for [item (sort list-of-classes)]
-     [:div {:style (str "margin:1em;overflow:auto;background:" (sstyles/chrome-colors :margin) "94;")}
-      [:div {:class (str  attach-class " "(apply str (rest item))) :style (str "background:" (sstyles/chrome-colors :padding) "94;")}
-       [:span {:style (str "background:" (sstyles/chrome-colors :element) "94;")}  item]]])))
+  [list-of-classes props]
+  (let [props (merge {:attach-class ""
+                      :item-decoration identity} props  )]
+    [:div.mik-pad-1 {:style "background:url(\"/sheet.png\")"}
+     (for [item (sort list-of-classes)]
+       (display-div (str (apply str (rest item)) " " (:attach-class props))
+                    ((:item-decoration props) item)))]))
 
 (defn- make-source-demo
   [item-result]
@@ -43,15 +44,15 @@
 
 (defn generate-doc
   ([title description gen-res]
-   (generate-doc title description gen-res ""))
-  ([title description gen-res attach-class]
+   (generate-doc title description gen-res {}))
+  ([title description gen-res props]
    (let [classes (get-class-names gen-res)]
      [:div
       [:h4.mik-cut-bottom [:a.mik-fs-0 {:href "#top"} "[ top ] "] title]
       [:p.mik-cut-top.mik-cut-bottom
        description]
       [:div.mik-pad-0.mik-margin-0
-       (make-demo attach-class classes )]
+       (make-demo classes props)]
       [:hr]])))
 
 (def ratio-scale
@@ -59,10 +60,15 @@
 
 (def datum
   [:div
+   ;; [:div.mik-defy-boundaries-angry
+   ;;  [:div.mik-white-back.mik-small-container.mik-pad-1
+   ;;   (color-material/generate-doc)]]
+   (color-material/generate-doc)
+   
    (generate-doc
     "Cut padding and margin of an element"
-    "Useful when you want to put element near to each other"
-    (styles/p-cut-specified) " mik-margin-0 mik-pad-0")
+    "Useful when you want to put elements adjacent to each other"
+    (styles/p-cut-specified) {:attach-class " mik-margin-0 mik-pad-0"})
    
    (generate-doc
     "Float element"
@@ -73,6 +79,7 @@
     "Align (or flush) layout either (left,right,center or justify)"
     [:span "In general, useful when " [:b " aligning "] " elements"]
     (styles/p-flush-specified))
+   
    (generate-doc
     "Padding element"
     [:div "Padding amount is calculated according to" [:b " ratio "] "scale in the config." "The default one is:" [:br]
@@ -93,31 +100,42 @@
      [:code ratio-scale] [:br]
      "Default elements are of the second element on the scale ratio"]
     (styles/p-fs-specified))
+   
    (generate-doc
     "Font weight"
     "Weights of the font size"
     (styles/p-fw) )
    (generate-doc
-    "Containers (default small and tiny)"
+    "Containers"
     "These behave similar to Bootstrap's container class"
-    (styles/p-containers)  )
+    (styles/p-containers))
    
    (generate-doc
     "Justify single line"
     ""
-    (styles/p-line-justify))
-   
+    (styles/p-line-justify)
+    {:item-decoration #(clojure.string/join " " (into [] %))})
+
    (generate-doc
     "Add shadow to the element"
     ""
-    (styles/p-shadow)  )
+    (styles/p-shadow)  {:attach-class " mik-margin-0 "} )
    (generate-doc
     "Make border square"
     ""
     (styles/p-square-border))
 
+   ;; [:div.mik-defy-boundaries-angry
+   ;;  [:div.mik-white-back.mik-container.mik-pad-1
+   ;;   (generate-doc
+   ;;    "Defy boundaries"
+   ;;    [:div "Will display the element not respecting parent container.  " [:br]
+   ;;     "To have an effect, selector should be put inside the parent container" [:br]]
+   ;;    (styles/p-defy-boundaries))]]
+   
+
+
    (generate-doc
     "Padded|Margin as button"
     "Will pad or add margins as in button"
-    (styles/p-as-button-specificed))
-   (color-material/generate-doc)])
+    (styles/p-as-button-specificed))])

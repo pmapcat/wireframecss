@@ -18,17 +18,18 @@
   [[(str "." name "-color")] {:color color}
    [(str "." name "-color-background")
     {:background color}]])
+(def font-serif "Patua One")
+(def font-sans "Open Sans")
 
-(def specific-styles
-  [[:h2 {:font-family "'Patua One', cursive"}]
-   [:h4 {:font-family "'Patua One', cursive" :font-weight "300"}]
+(defn specific-styles []
+  [[:h2 {:font-family font-serif }]
+   [:h4 {:font-family font-serif :font-weight "300"}]
    [:a {:color (:dark-blue chrome-colors) :font-weight "600" :text-decoration "none"}]
    [:a:hover {:color "#dcdbfa"  :font-weight "600"}]
-   [:b {:font-family "'Patua One', cursive" :font-weight "300"}]
+   [:b {:font-family font-serif  :font-weight "300"}]
    [:h1 {:font-family "Monoton" :font-weight "300"}]
-   ["*" {:font-family "Open Sans"
+   ["*" {:font-family font-sans
          :color (:dark-gray chrome-colors)}]
-   
    (color-and-back "margin" (:margin chrome-colors))
    (color-and-back "border" (:border chrome-colors))
    (color-and-back "padding" (:padding chrome-colors))

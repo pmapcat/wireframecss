@@ -9,9 +9,7 @@
   (:require
    [garden.core :as garden]
    [hiccup.core :as hiccup]
-   [wireframe.styles :as styles]
-   [wireframe.color-material :as color-styles]
-   [wireframe.styles-specific :as specific-styles]
+   [wireframe.config :refer [*VIEWS-FONTS*]]
    [wireframe.gen-doc :as gen-doc]))
       ;; [:b "TODO:" [:br]
       ;;  "fix up sizes" [:br]
@@ -21,12 +19,9 @@
 
 
 (def STYLES
-  [;;
-   "/pure-min.css"
-   ;; "/grids-responsive-min.css"
-   ;; "/highlight/styles/vs.css"
-   "https://fonts.googleapis.com/css?family=Open+Sans|Monoton|Patua+One"
-   ])
+  ["/pure-min.css" *VIEWS-FONTS*
+   "/mik/t/wireframe.css"
+   "/specific.css"])
 
 (defn head []
   [:head {:itemtype "http://schema.org/Article", :itemscope "itemscope"}
@@ -37,32 +32,30 @@
      
      [:title "Documentation site"]
      (for [item STYLES]
-       [:link {:href item :rel "stylesheet"}])
-     [:style (garden/css (styles/base-styles))]
-     [:style (garden/css (color-styles/gen-palette))]
-     [:style (garden/css specific-styles/specific-styles)]])])
+       [:link {:href item :rel "stylesheet"}])])])
 
 (defn main
   []
   (hiccup/html
    [:html
     (head)
-    [:body {:style "background:url('background.png')"}
+    [:body {:style "background:url('/background.png')"}
      [:div.mik-tiny-container {:style "background:white;"}
       [:header
        [:div.pure-u-1.mik-pad-top.mik-pad-bottom
         [:h1#top.mik-line-justify.mik-fs-4.mik-cut "W i r e"]
         [:h1#top.mik-line-justify.mik-fs-4.mik-cut "f r a m e"]
-        
-        [:div
+        [:div.mik-fw-2.mik-fs-0
          [:p.mik-cut.mik-flush-right "A set of practical, framework agnostic, zero configuration CSS classes"]
          [:p.mik-flush-right.mik-cut [:a {:href "#"} "Github"]]
          [:p.mik-flush-right.mik-cut  "Download"
           [:br]
-          [:a {:href "#"}  " [ mik- ] "]
-          [:a {:href "#"} " [ qq- ] "]
-          [:a {:href "#"} " [ dd- ] "]]]]]
-      
+          [:a {:href "/mik/f/wireframe.css"}  " [ mik- ] "]
+          [:a {:href "/mik/t/wireframe.css"}  " [ color- ]"] [:br]
+          [:a {:href "/qq/f/wireframe.css"} " [ qq- ] "]
+          [:a {:href "/qq/t/wireframe.css"}  " [ color- ]"]  [:br]
+          [:a {:href "/dd/f/wireframe.css"} " [ dd- ] "]
+          [:a {:href "/dd/t/wireframe.css" }  " [ color- ]"]  ]]]]
       [:main {:role "main"}
        [:p.mik-pad-0.element-color-background "Use " [:b "-angry "] "suffix to override (add " [:b "  !important "]
         " ) to the selector rules" [:br]
@@ -72,11 +65,10 @@
        [:div
         [:div.smaller.warm-gray.mik-flush-right.mik-footer  "Made with ❤ in Clojure" [:br]
          "Copyright © 2018 M.L" [:br]
-         "All rights reserved" [:br]]]]]]]))
-
-
-
-
+         "All rights reserved" [:br]]
+        [:div.mik-fs-0
+         [:a {:href "/sheet.png"} "Sheet background"]
+         [:a {:href "/background.png"} "Background image"]]]]]]]))
 
 
 
