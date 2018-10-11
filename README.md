@@ -22,6 +22,9 @@ with CSS. Although, some of the frameworks have similar
 helpers, not all of them have all those that I need. 
 And they tend to name things differently there.
 
+Some of the other implementations might require pipelines
+that differ from a particular workflow. 
+
 ## Tips
 
 Use **-angry** suffix to override your framework defaults (add **!important** ) to the selected rules
