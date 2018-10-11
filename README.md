@@ -27,7 +27,7 @@ And they tend to name things differently there.
 Use **-angry** suffix to override your framework defaults (add **!important** ) to the selected rules
 For example: **.qq-cut-bottom becomes** turns into **.qq-cut-bottom-angry**
 
-## In the wild (mostly my stuff here)
+## Showcase (mostly my stuff here)
 
 * [Static blog engine. Building theme in conjunction with PureCSS](https://www.michaelleahcim.com/blog/all/0/index.html)
 * [(HTML screens in conjunction with PureCSS)](https://www.michaelleahcim.com/work-article/group_tracker.html)
