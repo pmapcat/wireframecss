@@ -4,7 +4,7 @@ A set of practical, framework agnostic, zero configuration CSS classes
 for everyday use
 ![screen capture](https://raw.githubusercontent.com/MichaelLeachim/wireframecss/master/resources/public/screenshot.png)
 
-Documentation and compilled scripts are available [here](http://wireframecss.michaelleahcim.com/)
+Documentation and compilled scripts are available [here](https://wireframecss.michaelleahcim.com/)
 
 ## Running
 
@@ -20,13 +20,3 @@ git clone github.com/MichaelLeachim/wireframecss;
 cd wireframecss;
 tmuxinator .
 ```
-
-## License
-
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@ Copyright (c) Michael Leachim                                                      @
-@ You can find additional information regarding licensing of this work in license.md @
-@ You must not remove this notice, or any other, from this document.                 @
-@ All rights reserved.                                                               @
-@@@@@@ At 2018-11-10 19:12 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
