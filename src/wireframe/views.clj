@@ -50,7 +50,7 @@
          [:p.mik-cut.mik-flush-right "for everyday use"]]
         
         [:div.mik-fw-2.mik-fs-0.mik-pad-top-5
-         [:p.mik-flush-right.mik-cut.mik-pad-top-0 [:a {:href "#"} "Github"]]
+         [:p.mik-flush-right.mik-cut.mik-pad-top-0 [:a {:href "https://github.com/MichaelLeachim/wireframecss"} "Github"]]
          [:p.mik-flush-right.mik-cut  "Download"
           [:br]
           [:a {:href "/mik/f/wireframe.css"}  " [ mik- ] "]
