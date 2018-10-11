@@ -22,7 +22,7 @@ rm -r ./out/*
 mv 127.0.0.1+3000/* out/;
 rm -r 127.0.0.1+3000/;
 cd out;
-# rclone sync . s3:wireframecss.michaelleahcim.com  --progress;
+rclone sync . s3:wireframecss.michaelleahcim.com  --progress;
 cd ../;
 echo "DONE;"
 

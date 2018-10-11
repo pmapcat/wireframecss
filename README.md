@@ -3,12 +3,14 @@
 <img src="https://raw.githubusercontent.com/MichaelLeachim/wireframecss/master/resources/public/screenshot.png" style="text-align:center;"></img>
 
 
-A set of practical, framework agnostic, zero configuration CSS classes
-for everyday use
+Documentation and compilled styles are available [here](https://wireframecss.michaelleahcim.com/)
 
-Documentation and compilled scripts are available [here](https://wireframecss.michaelleahcim.com/)
+## Minified CSS
 
-
+* [Prefix **qq** without palette](https://wireframecss.michaelleahcim.com/qq/f/wireframe.css)
+* [Prefix **qq** with    palette](https://wireframecss.michaelleahcim.com/qq/t/wireframe.css)
+* [Prefix **dd** without palette](https://wireframecss.michaelleahcim.com/dd/f/wireframe.css)
+* [Prefix **dd** with    palette](https://wireframecss.michaelleahcim.com/dd/t/wireframe.css)
 
 ## Running
 
