@@ -6,7 +6,7 @@
 ;; @@@@@@ At 2018-09-10 17:23 <mklimoff222@gmail.com> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 (ns wireframe.styles
   (:require [garden.stylesheet :refer [at-media]]
-            [wireframe.config :refer [*PREFIX* *RATIO*]]
+            [wireframe.config :refer [*PREFIX* *RATIO* *LEVELS-AT*]]
             [wireframe.utils :refer [dstr kstr angry]]))
 
 (defn ratio
@@ -130,13 +130,13 @@
   (map p-flush ["left" "right" "center" "justify"]))
 
 (defn p-fs-specified []
-  (p-fs 6))
+  (p-fs *LEVELS-AT*))
 
 (defn p-pad-specified []
-  (map (partial p-pad 6)    ["" "top" "bottom" "left" "right"]))
+  (map (partial p-pad *LEVELS-AT*)    ["" "top" "bottom" "left" "right"]))
 
 (defn p-margin-specified []
-  (map (partial p-margin 6) ["" "top" "bottom" "left" "right"]))
+  (map (partial p-margin *LEVELS-AT*) ["" "top" "bottom" "left" "right"]))
 
 
 (defn base-styles

@@ -7,10 +7,13 @@
 (ns wireframe.config)
 
 (def ^{:dynamic true} *RATIO*  [0.5 1 1.5 2.5 4 6.5 10.5])
+(def ^{:dynamic true} *LEVELS-AT*  6)
+
 (def ^{:dynamic true} *PREFIX* "mik")
 (def ^{:dynamic true} *ANGRY* false)
 (def ^{:dynamic true} *MATERIAL-PALETTE*
   (read-string (slurp (clojure.java.io/resource "material_palette.edn"))))
+
 (def ^{:dynamic true} *COLOR-NAMES*
   [:black   :white   :red   :pink   :purple
    :deeppurple :indigo  :blue   :lightblue :cyan
