@@ -44,10 +44,13 @@
       [:header
        [:div.pure-u-1.mik-pad-top.mik-pad-bottom
         [:h1#top.mik-line-justify.mik-fs-4.mik-cut "W i r e"]
-        [:h1#top.mik-line-justify.mik-fs-4.mik-cut "f r a m e"]
-        [:div.mik-fw-2.mik-fs-0
+        [:h1#top.mik-line-justify.mik-fs-4.mik-cut-angry "f r a m e"]
+        [:div.mik-fw-1.mik-fs-0
          [:p.mik-cut.mik-flush-right "A set of practical, framework agnostic, zero configuration CSS classes"]
-         [:p.mik-flush-right.mik-cut [:a {:href "#"} "Github"]]
+         [:p.mik-cut.mik-flush-right "for everyday use"]]
+        
+        [:div.mik-fw-2.mik-fs-0.mik-pad-top-5
+         [:p.mik-flush-right.mik-cut.mik-pad-top-0 [:a {:href "#"} "Github"]]
          [:p.mik-flush-right.mik-cut  "Download"
           [:br]
           [:a {:href "/mik/f/wireframe.css"}  " [ mik- ] "]

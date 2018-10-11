@@ -29,7 +29,8 @@
    [:b {:font-family font-serif  :font-weight "300"}]
    [:h1 {:font-family "Monoton" :font-weight "300"}]
    ["*" {:font-family font-sans
-         :color (:dark-gray chrome-colors)}]
+         ;; :color (:dark-gray chrome-colors)
+         }]
    (color-and-back "margin" (:margin chrome-colors))
    (color-and-back "border" (:border chrome-colors))
    (color-and-back "padding" (:padding chrome-colors))

@@ -1,12 +1,10 @@
 # Wireframe CSS
 
+<img src="https://raw.githubusercontent.com/MichaelLeachim/wireframecss/master/resources/public/screenshot.png" style="text-align:center;"></img>
 A set of practical, framework agnostic, zero configuration CSS classes
 for everyday use
-<img src="https://raw.githubusercontent.com/MichaelLeachim/wireframecss/master/resources/public/screenshot.png" style="text-align:center;"></img>
 
 Documentation and compilled scripts are available [here](https://wireframecss.michaelleahcim.com/)
-
-Ready scripts:
 
 
 
