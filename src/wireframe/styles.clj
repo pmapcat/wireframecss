@@ -107,7 +107,9 @@
     {:text-align (angry "justify")}
     [:&:after {:content (angry "\"\"") :display (angry "inline-block") :width (angry "100%")}]])
 
-
+(defn p-width-100 []
+  [(dstr :width-100)
+    {:width (angry "100%")}])
 
 
 (defn p-shadow []
@@ -151,6 +153,7 @@
    (p-fw)
    (p-containers)
    (p-line-justify)
+   (p-width-100)
    (p-shadow)
    (p-square-border)
    (p-as-button-specificed)])

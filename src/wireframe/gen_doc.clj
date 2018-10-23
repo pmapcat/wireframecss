@@ -117,6 +117,11 @@
     {:item-decoration #(clojure.string/join " " (into [] %))})
 
    (generate-doc
+    "Sets width to 100%"
+    ""
+    (styles/p-width-100))
+
+   (generate-doc
     "Add shadow to the element"
     ""
     (styles/p-shadow)  {:attach-class " mik-margin-0 "} )
@@ -133,8 +138,6 @@
    ;;     "To have an effect, selector should be put inside the parent container" [:br]]
    ;;    (styles/p-defy-boundaries))]]
    
-
-
    (generate-doc
     "Padded|Margin as button"
     "Will pad or add margins as in button"
